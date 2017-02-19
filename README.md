@@ -21,7 +21,7 @@ Navigate to input.txt and type/paste your input in the following format:
 From the root directory:
 
 ```bash
-$ git clone (this repo)
+$ git clone https://github.com/devonkoch/game-of-life.git
 $ npm i && node startGame.js
 ```
 
