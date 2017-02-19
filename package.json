@@ -1,0 +1,10 @@
+{
+  "name": "game-of-life",
+  "version": "0.0.0",
+  "description": "Conway's Game of Life",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "author": "Devon Koch",
+}
