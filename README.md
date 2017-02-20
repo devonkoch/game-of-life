@@ -6,10 +6,7 @@ Navigate to input.txt and type/paste your input in the following format:
 ```
 (cycles)
 (width) (height)
-(row)
-(row1)
-..
-(row[height])
+(rows)
 <EOF>
 ```
 
