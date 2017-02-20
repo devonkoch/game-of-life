@@ -6,5 +6,5 @@
   "scripts": {
     "start": "node startGame.js"
   },
-  "author": "Devon Koch",
+  "author": "Devon Koch"
 }

@@ -5,8 +5,7 @@ var Game = function(board, render) {
 
 Game.prototype.tick = function() {
     var self = this,
-        dead = [],
-        born = [],
+        dead = [], born = [],
         neighbors, sum;
 
     this.render(this.board);
@@ -19,10 +18,10 @@ Game.prototype.tick = function() {
                 return self.getCoordinate(coordinate) + sum;
             }, 0);
 
-            if (sum < 2 || sum > 3) {
-                dead.push([rowIndex, cellIndex])
-            } else if (cell === 0 && sum === 3) {
+            if (sum === 3 && cell === 0) {
                 born.push([rowIndex, cellIndex])
+            } else if (sum < 2 || sum > 3) {
+                dead.push([rowIndex, cellIndex])
             }
 
         });
@@ -39,8 +38,8 @@ Game.prototype.tick = function() {
 }
 
 Game.prototype.getNeighbors = function(rowIndex, cellIndex) {
-    var rows = this.board.length,
-        columns = this.board[0].length,
+    var maxRowIndex = this.board.length - 1,
+        maxColIndex = this.board[0].length - 1,
         directions = [-1, 0, 1],
         neighbors = [];
 
@@ -50,15 +49,15 @@ Game.prototype.getNeighbors = function(rowIndex, cellIndex) {
                 var neighbor = [rowIndex + rowDirection, cellIndex + columnDirection];
                 // wrapping
                 if (neighbor[0] === -1) {
-                    neighbor[0] = rows;
+                    neighbor[0] = maxRowIndex;
                 }
-                if (neighbor[1] === -1) {
-                    neighbor[1] = columns;
-                }
-                if (neighbor[0] === rows + 1) {
+                if (neighbor[0] === maxRowIndex + 1) {
                     neighbor[0] = 0;
                 }
-                if (neighbor[1] === columns + 1) {
+                if (neighbor[1] === -1) {
+                    neighbor[1] = maxColIndex;
+                }
+                if (neighbor[1] === maxColIndex + 1) {
                     neighbor[1] = 0;
                 }
                 neighbors.push(neighbor);
@@ -70,10 +69,7 @@ Game.prototype.getNeighbors = function(rowIndex, cellIndex) {
 }
 
 Game.prototype.getCoordinate = function(coord) {
-    var cell;
-    if (this.board[coord[0]]) {
-        cell = this.board[coord[0]][coord[1]];
-    }
+    var cell = this.board[coord[0]][coord[1]];
     return cell ? cell : 0;
 }
 

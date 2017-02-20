@@ -11,7 +11,7 @@ function readText(file, callback) {
 function writeFile(file, data) {
     fs.writeFile(file, data, function(err) {
         if (err) return console.log(err);
-        console.log('File Written Success');
+        console.log('Output written to output.txt');
     });
 };
 

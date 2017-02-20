@@ -11,20 +11,20 @@ function render(board) {
     board.forEach(function(row) {
         stringedBoard += row.join(' ') + '\n';
     });
-
+    console.log(stringedBoard);
     boards.push(stringedBoard);
 }
 
-io.getBoard(inputFile, function(board, cycles) {
-    var currentCycle = 0;
+io.getBoard(inputFile, function(board, cycleTotal) {
+    var cycleCount = 1;
     var game = new Game(board, render);
     var timer = setInterval(function() {
         game.tick();
-        if (currentCycle === cycles) {
+        if (cycleCount === cycleTotal) {
             clearInterval(timer);
             io.writeFile(outputFile, boards.join('\n'));
         }
-        currentCycle++;
+        cycleCount += 1;
     }, 500);
 
 });
