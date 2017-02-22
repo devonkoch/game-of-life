@@ -34,4 +34,4 @@ $ npm i && npm run start
 
 ### Use
 
-Watch the results output every 1/2 second in your terminal (stdout), or wait for the output.txt file to appear in the root directory after the board has finished its course.
+Watch the results of each input in `games/input`output every 1/2 second in your terminal (stdout), or wait for the `output#.txt` files to appear in the `games/output` directory after the script has finished running.
