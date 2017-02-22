@@ -11,14 +11,14 @@ function readText(file, callback) {
 function writeFile(file, data) {
     fs.writeFile(file, data, function(err) {
         if (err) return console.log(err);
-        console.log('Output written to output.txt');
+        console.log('Output written to /output');
     });
 };
 
 function getBoard(inputFile, callback) {
     readText(inputFile, function(err, data) {
-        var currentRow, board = [];
-        var cycles = parseInt(data[0]);
+        var board = [];
+            cycles = parseInt(data[0]);
 
         for (var i = 2; i < data.length; i++) {
             board.push(data[i].split(' ')
